@@ -1,0 +1,17 @@
+
+public class OperatorMain08 {
+
+	public static void main(String[] args) {
+		//최대 최소구하기
+		int a = 5, b = 10;
+		int max;//최대값
+		int min;
+		
+		max = a > b ? a : b; //3항연산자를 이용한 값비교
+		min = a > b ? b : a;
+		
+		System.out.printf("max: %d\n", max);//출력
+		System.out.printf("min: %d", min);
+	}
+
+}
