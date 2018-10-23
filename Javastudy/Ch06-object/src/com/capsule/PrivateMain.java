@@ -17,8 +17,10 @@ public class PrivateMain {
 	public static void main(String[] args) {
 		
 		Bus b = new Bus();
-		//b.number = 2121;
-		b.money = 10000;
+		b.setNumber(321);
+		b.money = 1000;
+		System.out.println(b.getNumber());
+		System.out.println(b.money);
 
 	}
 
