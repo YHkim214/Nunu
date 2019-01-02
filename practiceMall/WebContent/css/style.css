@@ -1,5 +1,10 @@
 @charset "UTF-8";
 
+body {
+	background-color: #252A31;
+	font-family: sans-serif;
+}
+
 footer {
 	position: absolute;
 	bottom: 0;
@@ -29,11 +34,6 @@ footer {
 	color: white;
 }
 
-body {
-	background-color: #252A31;
-	font-family: sans-serif;
-	margin: 0;
-}
 
 #header_top_wrap {
 	width: 1000px;

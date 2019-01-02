@@ -21,12 +21,12 @@
 </head>
 <body>
 	<!-- 페이지에 공통으로 들어가는 헤더 -->
-	<jsp:include page="/module/header2.jsp" flush="false" />
+	<jsp:include page="/module/header.jsp" flush="false" />
 	
 	<!-- 여기에 코드를 작성한다. -->
 	
 	<!-- 페이지에 공통으로 들어가는 푸터 -->
-	<jsp:include page="/module/footer2.jsp" flush="false" />
+	<jsp:include page="/module/footer.jsp" flush="false" />
 	<!-- 부트스트랩용 자바스크립트 코드-->
 	<!-- jquety, popper.js, bootstrap.js순서대로 배치한다. -->
 	<script
