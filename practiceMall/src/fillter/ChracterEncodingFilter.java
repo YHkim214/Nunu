@@ -8,7 +8,9 @@ import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
+import javax.servlet.annotation.WebFilter;
 
+@WebFilter("/*")
 public class ChracterEncodingFilter implements Filter{
 
 	
@@ -19,10 +21,11 @@ public class ChracterEncodingFilter implements Filter{
 	}
 
 	@Override
-	public void doFilter(ServletRequest arg0, ServletResponse arg1, FilterChain arg2)
+	public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain)
 			throws IOException, ServletException {
 		// TODO Auto-generated method stub
-		
+		req.setCharacterEncoding("utf-8");
+		chain.doFilter(req, res);
 	}
 
 	@Override

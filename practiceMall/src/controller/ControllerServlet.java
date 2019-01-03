@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @WebServlet(name = "controllerServlet", urlPatterns="*.do",
-initParams={@WebInitParam(name="configFile", value="handlerNames.properties")})
+initParams={@WebInitParam(name="configFile", value="/properties/handlerNames.properties")})
 public class ControllerServlet extends HttpServlet{
 	
 	private Map<String, CommandHandler> HandlerMap = new HashMap<>();
@@ -45,16 +45,16 @@ public class ControllerServlet extends HttpServlet{
 	}
 	
 	@Override
-	public void doGet(HttpServletRequest req, HttpServletResponse res) {
+	public void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException {
 		process(req, res);
 	}
 	
 	@Override
-	public void doPost(HttpServletRequest req, HttpServletResponse res) {
+	public void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException {
 		process(req, res);
 	}
 	
-	public void process(HttpServletRequest req, HttpServletResponse res) {
+	public void process(HttpServletRequest req, HttpServletResponse res) throws IOException {
 		String requestedUrI = req.getRequestURI();
 		CommandHandler handler = HandlerMap.get(requestedUrI);
 		String view = null;

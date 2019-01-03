@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,30 +12,6 @@
 	integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
 	crossorigin="anonymous">
 <link rel="stylesheet" href="/practiceMall/css/style.css" type="text/css">
-<style type="text/css">
-.container {
-	width: 1000px;
-	margin: 0 auto;
-	color: white;
-}
-
-#join_title {
-	width: 100px;
-	font-size: 15pt;
-	border-top: 2px solid gray;
-	text-align: center;
-	margin-top:50px;
-}
-
-#join_form_wrapper {
-	width: 800px;
-	margin: 50px auto;
-}
-
-#join_form {
-	width: 100%;
-}
-</style>
 <title>회원가입</title>
 </head>
 <body>
@@ -44,8 +21,7 @@
 			<div id="join_title">회원가입</div>
 		</div>
 		<div class="row" id="join_form_wrapper">
-			<form action="/practiceMall/member/join.do" method="post"
-				id="join_form">
+			<form action="/practiceMall/member/join.do" method="post" id="join_form">
 				<!-- 라디오버튼 -->
 				<fieldset class="form-group">
 					<div class="row">
@@ -54,12 +30,12 @@
 							<div class="form-check form-check-inline">
 								<input class="form-check-input" type="radio" name="member_type"
 									id="member_type1" value="1" checked> <label
-									class="form-check-label" for="gridRadios1"> 일반 회원 </label>
+									class="form-check-label" for="member_type1"> 일반 회원 </label>
 							</div>
 							<div class="form-check form-check-inline">
 								<input class="form-check-input" type="radio" name="member_type"
 									id="member_type2" value="2"> <label
-									class="form-check-label" for="gridRadios1"> 판매자 회원 </label>
+									class="form-check-label" for="member_type2"> 판매자 회원 </label>
 							</div>
 						</div>
 					</div>
@@ -68,29 +44,43 @@
 				<div class="form-group row">
 					<label for="member_name" class="col-sm-2 col-form-label">이름</label>
 					<div class="col-sm-10">
-						<input type="text" class="form-control" id="member_name">
+						<input type="text" class="form-control" id="member_name" name="member_name" value=${param.member_name }>
+						<c:if test="${errors.name}">
+							<small id="idHelp" class="form-text text-muted">이름을 입력해 주세요</small>
+						</c:if>
 					</div>
 				</div>
 				<!-- 아이디 -->
 				<div class="form-group row">
 					<label for="member_id" class="col-sm-2 col-form-label">아이디</label>
 					<div class="col-sm-10">
-						<input type="text" class="form-control" id="member_id">
+						<input type="text" class="form-control" id="member_id" name="member_id" value=${param.member_id }>
+						<c:if test="${errors.id}">
+							<small id="idHelp" class="form-text text-muted">12자 이하의 영문, 한글 숫자로 이루어진 아이디를 입력해주세요.</small>
+						</c:if>
+						<c:if test="${errors.duplicate}">
+							<small id="idHelp" class="form-text text-muted">중복된 아이디 입니다.</small>
+						</c:if>	
 					</div>
 				</div>
 				<!-- 비밀번호 -->
 				<div class="form-group row">
 					<label for="member_password" class="col-sm-2 col-form-label">비밀번호</label>
 					<div class="col-sm-10">
-						<input type="password" class="form-control" id="member_password">
+						<input type="password" class="form-control" id="member_password" name="member_password" value=${param.member_password }>
+						<c:if test="${errors.password}">
+							<small id="passwordHelp" class="form-text text-muted">비밀번호는 공백을 제외하고 최소 8자 이상이어야 합니다.</small>
+						</c:if>	
+						<c:if test="${errors.notMatch}">
+							<small id="passwordHelp" class="form-text text-muted">비밀번호가 일치하지 않습니다</small>
+						</c:if>	
 					</div>
 				</div>
 				<!-- 비밀번호 확인-->
 				<div class="form-group row">
-					<label for="confirm_password" class="col-sm-2 col-form-label">비밀번호
-						확인</label>
+					<label for="confirm_password" class="col-sm-2 col-form-label">비밀번호 확인</label>
 					<div class="col-sm-10">
-						<input type="password" class="form-control" id="confirm_password">
+						<input type="password" class="form-control" id="confirm_password" name="confirm_password" value=${param.confirm_password }>
 					</div>
 				</div>
 				<!-- 회원가입 버튼 -->
@@ -105,7 +95,7 @@
 	<jsp:include page="/module/footer.jsp" flush="true" />
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<script src="/practiceMall/js/test.js"></script>
+	<script src="/practiceMall/js/events.js"></script>
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
 		integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
