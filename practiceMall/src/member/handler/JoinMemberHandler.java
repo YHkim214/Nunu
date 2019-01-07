@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.naming.NamingException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -18,7 +19,7 @@ import member.dao.MemberDto;
 public class JoinMemberHandler implements CommandHandler{
 	
 	private final String FORM_VIEW = "/WEB-INF/view/joinForm.jsp";
-	private MemberDao memberDao = new MemberDao();
+	private MemberDao memberDao = MemberDao.getInstance();
 	
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse res) throws IOException {
@@ -48,20 +49,20 @@ public class JoinMemberHandler implements CommandHandler{
 		//조건체크
 		if(member_name == null || member_name.isEmpty()) {
 			errors.put("name", Boolean.TRUE);
-			return FORM_VIEW;
 		}
 		if(member_id == null || member_id.isEmpty()) {
 			errors.put("id", Boolean.TRUE);
-			return FORM_VIEW;
 		}
 		if(member_password == null || member_password.isEmpty() || member_password.trim().length() < 8) {
 			errors.put("password", Boolean.TRUE);
-			return FORM_VIEW;
 		}
 		if(!member_password.equals(confirm_password)) {
 			errors.put("notMatch", Boolean.TRUE);
-			return FORM_VIEW;
 		}
+		
+		if(!errors.isEmpty()) {
+			return FORM_VIEW;
+		} 
 		
 		MemberDto memberDto = new MemberDto();
 		memberDto.setMember_name(member_name);
@@ -83,22 +84,18 @@ public class JoinMemberHandler implements CommandHandler{
 		} catch(SQLException e) {
 			JdbcUtil.rollback(conn);
 			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			JdbcUtil.rollback(conn);
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			JdbcUtil.rollback(conn);
-			e.printStackTrace();
 		} catch(IdDuplicateException e) {
 			JdbcUtil.rollback(conn);
 			errors.put("duplicate", Boolean.TRUE);
 			return FORM_VIEW;
+		} catch (NamingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		} finally {
 			JdbcUtil.close(conn);
 		}
-		return "/index.jsp";
+		
+		return "/WEB-INF/view/joinSuccess.jsp";
 	}
 
 }

@@ -9,6 +9,14 @@ import jdbc.JdbcUtil;
 
 public class MemberDao {
 	
+	private static MemberDao memberDao = new MemberDao();
+	
+	private MemberDao() {}
+	
+	public static MemberDao getInstance() {
+		return memberDao;
+	}
+	
 	public MemberDto select(Connection conn, String member_id) throws SQLException {
 
 		PreparedStatement pstmt = null;

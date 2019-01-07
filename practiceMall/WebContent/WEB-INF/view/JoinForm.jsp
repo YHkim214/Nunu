@@ -15,7 +15,7 @@
 <title>회원가입</title>
 </head>
 <body>
-	<jsp:include page="/module/header.jsp" flush="true" />
+	<jsp:include page="/module/header.jsp"/>
 	<div class="container">
 		<div class="row">
 			<div id="join_title">회원가입</div>
@@ -44,9 +44,9 @@
 				<div class="form-group row">
 					<label for="member_name" class="col-sm-2 col-form-label">이름</label>
 					<div class="col-sm-10">
-						<input type="text" class="form-control" id="member_name" name="member_name" value=${param.member_name }>
+						<input type="text" class="form-control" id="member_name" name="member_name" value="${param.member_name }" autocomplete="off">
 						<c:if test="${errors.name}">
-							<small id="idHelp" class="form-text text-muted">이름을 입력해 주세요</small>
+							<small id="nameHelp" class="form-text text-muted">이름을 입력해 주세요</small>
 						</c:if>
 					</div>
 				</div>
@@ -54,7 +54,7 @@
 				<div class="form-group row">
 					<label for="member_id" class="col-sm-2 col-form-label">아이디</label>
 					<div class="col-sm-10">
-						<input type="text" class="form-control" id="member_id" name="member_id" value=${param.member_id }>
+						<input type="text" class="form-control" id="member_id" name="member_id" value="${param.member_id }" autocomplete="off">
 						<c:if test="${errors.id}">
 							<small id="idHelp" class="form-text text-muted">12자 이하의 영문, 한글 숫자로 이루어진 아이디를 입력해주세요.</small>
 						</c:if>
@@ -70,10 +70,7 @@
 						<input type="password" class="form-control" id="member_password" name="member_password" value=${param.member_password }>
 						<c:if test="${errors.password}">
 							<small id="passwordHelp" class="form-text text-muted">비밀번호는 공백을 제외하고 최소 8자 이상이어야 합니다.</small>
-						</c:if>	
-						<c:if test="${errors.notMatch}">
-							<small id="passwordHelp" class="form-text text-muted">비밀번호가 일치하지 않습니다</small>
-						</c:if>	
+						</c:if>
 					</div>
 				</div>
 				<!-- 비밀번호 확인-->
@@ -81,6 +78,9 @@
 					<label for="confirm_password" class="col-sm-2 col-form-label">비밀번호 확인</label>
 					<div class="col-sm-10">
 						<input type="password" class="form-control" id="confirm_password" name="confirm_password" value=${param.confirm_password }>
+						<c:if test="${errors.notMatch}">
+							<small id="confirmHelp" class="form-text text-muted">비밀번호가 일치하지 않습니다</small>
+						</c:if>	
 					</div>
 				</div>
 				<!-- 회원가입 버튼 -->
@@ -92,10 +92,9 @@
 			</form>
 		</div>
 	</div>
-	<jsp:include page="/module/footer.jsp" flush="true" />
+	<jsp:include page="/module/footer.jsp"/>
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<script src="/practiceMall/js/events.js"></script>
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
 		integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
@@ -104,5 +103,6 @@
 		src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
 		integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
 		crossorigin="anonymous"></script>
+	<script src="/practiceMall/js/events.js"></script>
 </body>
 </html>

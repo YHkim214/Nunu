@@ -1,9 +1,31 @@
 @charset "UTF-8";
-/* 푸터 스타일 */
+
+/* 공통 스타일 */
 body {
 	background-color: #252A31;
 	font-family: sans-serif;
+	color:white;
 }
+
+/* header.jsp스타일 */
+#header_wrap{
+	width:100%;
+}
+#top_wrap{
+	width:1000px;
+	margin: 20px auto;
+	color:white;
+}
+#header_nav_wrap{
+	width:100%;
+	background-color:#1A212B;
+}
+#header_nav{
+	width:1000px;
+	margin:0 auto;
+}
+
+/* footer.jsp 스타일 */
 
 footer {
 	position: absolute;
@@ -14,80 +36,12 @@ footer {
 	padding: 0;
 }
 
-#footer_menu_wrapper {
-	width: 1000px;
-	margin: 0 auto;
+#footer_nav_wrap{
+	width:1000px;
+	margin:0 auto;
 }
-
-#footer_menu {
-	list-style: none;
-	color: white;
-	padding: 0;
-}
-
-#footer_menu li {
-	display: inline;
-	margin-right: 10px;
-}
-
-#footer_copyright {
-	color: white;
-}
-
-/* 헤더 스타일 */
-#header_top_wrap {
-	width: 1000px;
-	margin: 0 auto;
-}
-
-#page_title {
-	font-size: 36pt;
-	color: white;
-}
-
-#button_wrap {
-	margin-left: 500px;
-}
-
-#button_wrap button {
-	margin: 5px;
-	padding: 6px;
-	/* 둥굴게하는 코드 */
-	border-radius: 4px;
-}
-
-#menu_bar {
-	background-color: #26303C;
-	height: 60px;
-	margin: 16px 0;
-}
-
-#menu_wrap {
-	width: 1000px;
-	margin: 0 auto;
-}
-
-#menu {
-	list-style: none;
-	margin: 0;
-}
-
-#menu li {
-	height: 60px;
-	width: 60px;
-	text-align: center;
-	color: white;
-	display: inline-block;
-	border-left: 1px solid white;
-	border-right: 1px solid white;
-}
-
 /* JoinForm.jsp 스타일 */
-.container {
-	width: 1000px;
-	margin: 0 auto;
-	color: white;
-}
+
 
 #join_title {
 	width: 100px;
@@ -104,4 +58,22 @@ footer {
 
 #join_form {
 	width: 100%;
+}
+
+/* joinSuccess.jsp 스타일 */
+
+#join_result{
+	width:600px;
+	height:400px;
+	margin:100px auto;
+	border:2px solid white;
+	color:black;
+}
+
+/* loginForm.jsp 스타일 */
+
+#login_form_wrap{
+	width:600px;
+	height:400px;
+	margin:100px auto;
 }

@@ -1,18 +1,34 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <header>
-<div id="header_top_wrap">
-	<span id="page_title">연습용 쇼핑몰</span>
-	<span id="button_wrap">
-		<button id="login">로그인</button>
-		<button id="join">회원가입</button>
-	</span>
-</div>
-<div id="menu_bar">
-	<div id="menu_wrap">
-		<ul id="menu">
-			<li><br>홈</li>
-		</ul>
+<div class="container" id="header_wrap">
+	<div class="row" id="top_wrap">
+		<div class="col-sm-8">
+			<span class="h1">윤호 몰</span>
+		</div>
+		<div class="col-sm-4">
+			<c:if test="${empty authUser}">
+			<a class="btn btn-primary" href="/practiceMall/member/login.do">로그인</a>
+			<a class="btn btn-primary" href="/practiceMall/member/join.do">회원가입</a>
+			</c:if>
+			<c:if test="${!empty authUser}">
+			<a class="btn btn-primary" href="/practiceMall/member/login.do">마이페이지</a>
+			<a class="btn btn-primary" href="/practiceMall/member/join.do">로그아웃</a>
+			<a class="btn btn-primary" href="/practiceMall/member/join.do">장바구니</a>
+		</c:if>
+		</div>
 	</div>
+</div>
+<div id="header_nav_wrap">
+	<nav class="navbar navbar-expand-lg navbar-dark bg-#1A212B" id="header_nav">
+		<div class="collapse navbar-collapse">
+			<ul class="navbar-nav">
+				<li class="nav-item active">
+					<a class="nav-link" href="/practiceMall/index.jsp">홈</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
 </div>
 </header>
