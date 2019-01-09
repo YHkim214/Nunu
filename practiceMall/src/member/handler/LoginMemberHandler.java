@@ -28,16 +28,29 @@ public class LoginMemberHandler implements CommandHandler{
 		
 		String member_id = req.getParameter("member_id");
 		String member_passwd = req.getParameter("member_passwd");
+		
+		//세션에 추가해주기 위한 회원유형
+		String member_type = null;
+		
+		if(member_id == null) {
+			return FORM_VIEW;
+		}
+		if(member_passwd == null) {
+			return FORM_VIEW;
+		}
 		MemberDto memberDto = null;
 		Connection conn = null;
 		
 		try {
 			conn = ConnectionProvider.getConnection();
 			memberDto = memberDao.select(conn, member_id);
+			//memberDto가 비어있을경우
 			if(memberDto == null) {
 				errors.put("idNotFound", Boolean.TRUE);
 				return FORM_VIEW;
 			}
+			//비밀번호가 틀렸을경우
+			member_type = memberDto.getMember_type();
 			if(!memberDto.isMatched(member_passwd)) {
 				errors.put("passwdNotMatch", Boolean.TRUE);
 				return FORM_VIEW;
@@ -50,6 +63,7 @@ public class LoginMemberHandler implements CommandHandler{
 			JdbcUtil.close(conn);
 		}
 		req.getSession().setAttribute("authUser", member_id);
+		req.getSession().setAttribute("userType", member_type);
 		return "/index.jsp";
 	}
 

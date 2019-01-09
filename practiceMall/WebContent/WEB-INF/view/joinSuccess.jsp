@@ -19,8 +19,8 @@
 	<div class="jumbotron" id="join_result">
   	<h1 class="display-4">가입을 환영합니다!</h1>
 		 <hr class="my-4">
-		 <a class="btn btn-primary btn-lg" href="#" role="button">로그인 하러가기</a>
-		 <a class="btn btn-primary btn-lg" href="/practiceMall/index.jsp" role="button">홈으로</a>
+		 <a class="btn btn-primary btn-sm" href="#" role="button">로그인 하러가기</a>
+		 <a class="btn btn-primary btn-sm" href="/practiceMall/index.jsp" role="button">홈으로</a>
 	</div>
 	<jsp:include page="/module/footer.jsp"/>
 	<script
@@ -33,6 +33,5 @@
 		src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
 		integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
 		crossorigin="anonymous"></script>
-	<script src="/practiceMall/js/events.js"></script>
 </body>
 </html>

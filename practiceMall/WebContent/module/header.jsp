@@ -4,19 +4,28 @@
 <header>
 <div class="container" id="header_wrap">
 	<div class="row" id="top_wrap">
-		<div class="col-sm-8">
+		<div class="col-sm-6">
 			<span class="h1">윤호 몰</span>
 		</div>
-		<div class="col-sm-4">
+		<div class="col-sm-6 text-right">
 			<c:if test="${empty authUser}">
-			<a class="btn btn-primary" href="/practiceMall/member/login.do">로그인</a>
-			<a class="btn btn-primary" href="/practiceMall/member/join.do">회원가입</a>
+			<a class="btn btn-primary btn-sm" href="/practiceMall/member/login.do">로그인</a>
+			<a class="btn btn-primary btn-sm" href="/practiceMall/member/join.do">회원가입</a>
 			</c:if>
 			<c:if test="${!empty authUser}">
-			<a class="btn btn-primary" href="/practiceMall/member/login.do">마이페이지</a>
-			<a class="btn btn-primary" href="/practiceMall/member/join.do">로그아웃</a>
-			<a class="btn btn-primary" href="/practiceMall/member/join.do">장바구니</a>
-		</c:if>
+				<c:if test="${userType == 1}">
+					<span>${authUser }님 환영합니다!</span>
+					<a class="btn btn-primary btn-sm" href="/practiceMall/member/mypage.do">마이페이지</a>
+					<a class="btn btn-primary btn-sm" href="/practiceMall/member/logout.do">로그아웃</a>
+					<a class="btn btn-primary btn-sm" href="#">장바구니</a>
+				</c:if>
+				<c:if test="${userType == 2}">
+					<span>${authUser }님 환영합니다!</span>
+					<a class="btn btn-primary btn-sm" href="/practiceMall/member/mypage.do">마이페이지</a>
+					<a class="btn btn-primary btn-sm" href="/practiceMall/member/logout.do">로그아웃</a>
+					<a class="btn btn-primary btn-sm" href="#">상품등록</a>
+				</c:if>
+			</c:if>
 		</div>
 	</div>
 </div>

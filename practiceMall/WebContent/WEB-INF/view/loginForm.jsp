@@ -13,18 +13,18 @@
 	crossorigin="anonymous">
 <link rel="stylesheet" href="/practiceMall/css/style.css"
 	type="text/css">
-<title>회원가입</title>
+<title>로그인</title>
 </head>
 <body>
 	<jsp:include page="/module/header.jsp" />
 	<div id="login_form_wrap">
-		<form action="/practiceMall/member/login.do" method="post">
+		<form action="/practiceMall/member/login.do" method="post" id="login_form">
 		<div class="form-group">
 			<label for="member_id">아이디</label> 
 			<input type="text" class="form-control" id="member_id" aria-describedby="idHelp" name="member_id" value="${param.member_id}"> 
 			<small id="idHelp" class="form-text text-muted">아이디를 입력해 주세요</small>
 			<c:if test="${errors.idNotFound}">
-			아이디가 없습니다.
+			<small class="form-text text-muted">아이디가 없습니다.</small>
 			</c:if>
 		</div>
 		<div class="form-group">
@@ -32,7 +32,7 @@
 			<input type="password" class="form-control" id="member_passwd" aria-describedby="passwdHelp" name="member_passwd" value="${param.member_passwd}"> 
 			<small id="passwdHelp" class="form-text text-muted">비밀번호를 입력해 주세요</small>
 			<c:if test="${errors.passwdNotMatch}">
-			비밀번호가 틀렸습니다.
+			<small class="form-text text-muted">비밀번호가 틀렸습니다.</small>
 			</c:if>
 		</div>
 		<button type="submit" class="btn btn-primary">로그인</button>
@@ -49,6 +49,6 @@
 		src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
 		integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
 		crossorigin="anonymous"></script>
-	<script src="/practiceMall/js/events.js"></script>
+	<script src="/practiceMall/js/loginForm.js"></script>
 </body>
 </html>

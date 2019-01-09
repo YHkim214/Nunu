@@ -40,6 +40,21 @@ footer {
 	width:1000px;
 	margin:0 auto;
 }
+
+/* 404.jsp 스타일 */
+
+#error404_wrap{
+	width:1000px;
+	height:500px;
+	margin:200px auto;
+}
+#error404_img{
+	width:500px;
+	height:500px;
+}
+#error404_msg{
+	padding:50px;
+}
 /* JoinForm.jsp 스타일 */
 
 
@@ -71,6 +86,14 @@ footer {
 }
 
 /* loginForm.jsp 스타일 */
+
+#login_title {
+	width: 1000px;
+	font-size: 15pt;
+	border-top: 2px solid gray;
+	text-align: center;
+	margin:50px auto;
+}
 
 #login_form_wrap{
 	width:600px;
