@@ -60,14 +60,13 @@ public class ControllerServlet extends HttpServlet{
 		String view = null;
 		if(handler == null) {
 			view = new NullHandler().process(req, res);
+		} else {
+			view = handler.process(req, res);
 		}
-		view = handler.process(req, res);
 		RequestDispatcher requestDispatcher = req.getRequestDispatcher(view);
 		try {
 			requestDispatcher.forward(req, res);
 		} catch (ServletException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}

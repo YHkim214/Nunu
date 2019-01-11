@@ -52,6 +52,26 @@ public class MemberDao {
 		}
 	}
 	
+	public boolean passwdCheck(Connection conn, String member_id, String member_passwd) throws SQLException{
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		boolean check = false;
+		try {
+			pstmt = conn.prepareStatement("SELECT member_passwd FROM mall_member where member_id=?");
+			pstmt.setString(1, member_id);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				if(member_passwd.equals(rs.getString(1))) {
+					check = true;
+				}
+			}
+		} finally {
+			JdbcUtil.close(rs);
+			JdbcUtil.close(pstmt);
+		}
+		return check;
+	}
+	
 	public MemberDto toMemberDto(ResultSet rs) throws SQLException {
 		MemberDto memberDto = new MemberDto();
 		memberDto.setMember_number(rs.getString("member_number"));

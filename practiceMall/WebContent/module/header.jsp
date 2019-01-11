@@ -15,13 +15,13 @@
 			<c:if test="${!empty authUser}">
 				<c:if test="${userType == 1}">
 					<span>${authUser }님 환영합니다!</span>
-					<a class="btn btn-primary btn-sm" href="/practiceMall/member/mypage.do">마이페이지</a>
+					<a class="btn btn-primary btn-sm" href="/practiceMall/mypage/mypageMain.do">마이페이지</a>
 					<a class="btn btn-primary btn-sm" href="/practiceMall/member/logout.do">로그아웃</a>
 					<a class="btn btn-primary btn-sm" href="#">장바구니</a>
 				</c:if>
 				<c:if test="${userType == 2}">
 					<span>${authUser }님 환영합니다!</span>
-					<a class="btn btn-primary btn-sm" href="/practiceMall/member/mypage.do">마이페이지</a>
+					<a class="btn btn-primary btn-sm" href="/practiceMall/mypage/mypageMain.do">마이페이지</a>
 					<a class="btn btn-primary btn-sm" href="/practiceMall/member/logout.do">로그아웃</a>
 					<a class="btn btn-primary btn-sm" href="#">상품등록</a>
 				</c:if>
